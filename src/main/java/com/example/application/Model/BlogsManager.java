@@ -15,6 +15,11 @@ public class BlogsManager {
     public BlogsManager() {
     }
 
+    /**
+     * Adds a new blog to the database.
+     *
+     * @param blog The blog object to be added.
+     */
     public static void addBlog(Blog blog) {
         try (Connection conn = ConnectDB.getConnection()) {
             PreparedStatement statement = conn.prepareStatement(
@@ -32,6 +37,11 @@ public class BlogsManager {
         }
     }
 
+    /**
+     * Retrieves a list of blogs from the database.
+     *
+     * @return A list of Blog objects representing the blogs in the database.
+     */
     public static List<Blog> getBlogs() {
         List<Blog> blogs = new ArrayList<>();
         try (Connection conn = ConnectDB.getConnection()) {
@@ -51,6 +61,11 @@ public class BlogsManager {
         return blogs;
     }
 
+    /**
+     * Removes a blog from the database.
+     *
+     * @param b the ID of the blog to be removed
+     */
     public static void removeBlog (String b) {
         try (Connection conn = ConnectDB.getConnection()) {
             PreparedStatement statement = conn.prepareStatement("DELETE FROM blogs WHERE blog_id = ?");

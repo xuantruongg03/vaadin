@@ -17,6 +17,12 @@ import com.vaadin.flow.theme.lumo.LumoUtility;
 
 public class CustomLayout extends HorizontalLayout implements BeforeEnterObserver {
 
+        /**
+         * This method is called before navigating to the view.
+         * It checks if the user is logged in and forwards to the login page if not.
+         *
+         * @param event the BeforeEnterEvent triggered when navigating to the view
+         */
         @Override
         public void beforeEnter(BeforeEnterEvent event) {
                 if (!isUserLoggedIn()) {
@@ -24,6 +30,11 @@ public class CustomLayout extends HorizontalLayout implements BeforeEnterObserve
                 }
         }
 
+        /**
+         * Checks if the user is logged in.
+         *
+         * @return true if the user is logged in, false otherwise.
+         */
         private boolean isUserLoggedIn() {
                 VaadinSession session = VaadinSession.getCurrent();
                 if (session.getAttribute("isLogin") != null) {
@@ -35,6 +46,26 @@ public class CustomLayout extends HorizontalLayout implements BeforeEnterObserve
         private H1 title;
         private Div body;
 
+        /**
+         * Constructs a new CustomLayout.
+         * 
+         * This class represents a custom layout for a Vaadin application. It includes a header section with an avatar and user information, a title, a side navigation menu, and a body section.
+         * 
+         * The header section includes a `Div` element with a `Span` for the username and a `Span` for the name. It also includes an `Image` element for the avatar.
+         * 
+         * The title section is represented by an `H1` element with customizable styling.
+         * 
+         * The side navigation menu is obtained from the `getSideNav()` method.
+         * 
+         * The body section is represented by a `Div` element with customizable styling.
+         * 
+         * @see Div
+         * @see Span
+         * @see Image
+         * @see H1
+         * @see SideNav
+         * @see Scroller
+         */
         public CustomLayout() {
                 Div to = new Div();
                 to.getStyle().set("display", "flex")
@@ -81,18 +112,36 @@ public class CustomLayout extends HorizontalLayout implements BeforeEnterObserve
                 add(container, body);
         }
 
+        /**
+         * Sets the title of the custom layout.
+         *
+         * @param title the new title to be set
+         */
         public void setTitle(String title) {
                 this.title.setText(title);
         }
 
+        /**
+         * Adds the specified container to the body of this custom layout.
+         *
+         * @param container the container to be added to the body
+         */
         public void addToBody(Div container) {
                 body.add(container);
         }
 
+        /**
+         * Adds the specified components to the body of the custom layout.
+         *
+         * @param components the components to be added to the body
+         */
         public void addToBody(Component... components) {
                 body.add(components);
         }
 
+        /**
+         * Represents a side navigation menu.
+         */
         private SideNav getSideNav() {
                 SideNav sideNav = new SideNav();
                 sideNav.addItem(

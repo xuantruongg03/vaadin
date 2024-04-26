@@ -10,10 +10,13 @@ import com.vaadin.flow.component.notification.Notification;
 public class ManagerAdmin {
     public ManagerAdmin() {
     }
-
-    public void addAdmin() {
-    }
-
+    /**
+     * Checks if the provided username and password match an entry in the admins table.
+     *
+     * @param username the username to check
+     * @param password the password to check
+     * @return true if the username and password match an entry in the admins table, false otherwise
+     */
     public static boolean checkLogin(String username, String password) {
         try (Connection conn = ConnectDB.getConnection()) {
             PreparedStatement statement = conn

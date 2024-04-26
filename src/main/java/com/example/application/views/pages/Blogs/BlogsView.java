@@ -35,7 +35,7 @@ public class BlogsView extends CustomLayout {
 
         Grid<Blog> grid = new Grid<>(Blog.class, false);
         grid.setHeight("70vh");
-        grid.addColumn(createBlogRenderer()).setHeader("Hình ảnh").setFlexGrow(0)
+        grid.addColumn(createImageBlogRenderer()).setHeader("Hình ảnh").setFlexGrow(0)
                 .setWidth("90px");
         grid.addColumn(Blog::getTitle).setHeader("Tiêu đề").setWidth("550px");
         // grid.addColumn(Blog::getDes).setHeader("Mô tả");
@@ -98,11 +98,11 @@ public class BlogsView extends CustomLayout {
 
 
     /**
-     * Creates a renderer for displaying a blog.
+     * Creates a renderer for displaying image blogs.
      *
-     * @return The renderer for displaying a blog.
+     * @return The renderer for image blogs.
      */
-    private static Renderer<Blog> createBlogRenderer() {
+    private static Renderer<Blog> createImageBlogRenderer() {
         return LitRenderer.<Blog>of(
                 "<vaadin-horizontal-layout style='align-items: center; height: 50px; width: 70px;' theme='spacing'>"
                         + "  <img src=\"${item.pictureUrl}\" style='width: 100%;' />\r\n"
